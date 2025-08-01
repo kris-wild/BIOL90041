@@ -1,0 +1,5 @@
+pacman::p_load(dplyr, nycflights13)
+data <- read.csv('../Projects/Bandicoot_project/Ticks_data_final.csv')
+
+
+range(data$Mass, na.rm = TRUE)

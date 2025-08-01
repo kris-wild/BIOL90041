@@ -1,0 +1,11 @@
+﻿Column name,definition
+variable,description
+Latin_name,latin name of plant
+Family,plant family
+Leaf,leaf replicate monitored
+Tair_(˚C),air temperture
+RH_(%),relative humidity
+S_(W/m2),solar irrandiance
+u_(m/s),wind speed
+gs_mmol/ms,stomatal conductance
+Tl_(˚C),leaf temperature

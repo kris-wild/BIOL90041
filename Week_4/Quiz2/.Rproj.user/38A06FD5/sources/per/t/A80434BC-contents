@@ -1,0 +1,246 @@
+---
+title: "BIOL 5000 Exam 2"
+output: html_document
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r setup2, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, include = TRUE)
+####TOGGLE the 'include' OPTION FOR STUDENT vs. KEY VERSION of EXAM####
+```
+
+##  {.tabset}
+
+### As we have done before:
+
+1.  Make a new project folder (directory) containing a .Rproj file. Use
+    your last name as the first part of the file name (e.g.
+    "Mylastname_exam2").
+
+2.  Open a blank script file (.R) and save it in your project folder
+
+3.  Copy any data files you need for answering questions into the
+    project folder.
+
+4.  Load necessary libraries (library calls should be at top of script
+    file)
+
+```{r setup, warning = FALSE, message = FALSE, echo = TRUE, include=TRUE}
+library(readr)
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+library(emmeans)
+library(multcomp)
+library(ggfortify)
+```
+
+5.  Make each answer (or part of an answer) an object (like we did in
+    the previous practices, "quest1 \<- code...code...code")
+
+6.  Save the final results figure(s) as a .png file.
+
+7.  Provide a results statement for each question in the format expected
+    in a journal article.
+
+8.  Zip your project file and upload it to D2L.
+
+------------------------------------------------------------------------
+
+### Question 1
+
+**North American Hawks (Cooper's, Sharp-shinned, Red-tailed)**
+
+Is there a difference in body mass among three species of North American
+Hawks? Discuss overall and relative differences by providing an
+appropriate results statement for the following example analysis.
+
+<img src="pics/hawks.jpg" width="400"/>
+<img src="pics/red-tailed.jpg" width="275"/>
+
+```{r import}
+hawks <- read.csv("hawks.csv")
+```
+
+```{r hawks_figure, echo=FALSE, fig.height=3, message=FALSE, warning=FALSE, include=TRUE}
+
+ggplot(hawks, aes(Species, Mass_g, fill=Species))+
+  geom_boxplot(outlier.colour = "lightgray") +
+  annotate("text", x=1, y=1850, label="b") +
+  annotate("text", x=2, y=1850, label="c") +
+  annotate("text", x=3, y=1850, label="a") +
+  #make plot pretty
+  xlab("Hawk Species") +
+  ylab("Body Mass (g)") +
+  theme_bw() +
+  theme(legend.position="none")
+
+#ggsave("hawks_body_mass.png")
+```
+
+```{r hawks_question1}
+model_hawk_mass <- lm(Mass_g ~ Species, data=hawks)
+```
+
+```{r anova, echo=FALSE, include=TRUE}
+anova(model_hawk_mass)
+```
+
+```{r hawk_mass_summary, echo=FALSE, include=TRUE}
+summary(model_hawk_mass)
+```
+
+```{r hawk_mass_emm, echo=FALSE, include=TRUE}
+emm_model_hawk_mass <- emmeans(model_hawk_mass, "Species")
+pairs(emm_model_hawk_mass)
+multcomp::cld(emm_model_hawk_mass, Letters=letters)
+```
+
+Results statement goes here.....
+
+------------------------------------------------------------------------
+
+### Question 2
+
+**Sexual Dimorphism in Cooper's Hawks**
+
+<img src="pics/pair-Coopers.jpg" width="300"/>
+
+Use the `hawks.csv` file for analyses.
+
+1.  Do tail length (Tail) of Cooper's Hawks differ between males and
+    females?
+
+2.  Make at least two different `ggplot` figures to show tail differences between the sexes.
+
+3.  Present the results of your analyses as you would see in a
+    scientific journal article.
+
+```{r coopers_figs, message=FALSE, warning=FALSE}
+#could also use `HawkTail2` dataset if you want them to stack data first (2 species data)
+
+library(patchwork)
+
+hawks_Coopers <- hawks %>%
+  filter(Species == "Cooper's", Sex != "NA") 
+
+p2a <- ggplot(hawks_Coopers, aes(x = Tail)) +
+  geom_histogram(binwidth = 10, color="black") + #make bins reasonable width
+  facet_wrap(~ Sex, ncol = 1) +
+	theme_bw()
+
+p2b <- ggplot(hawks_Coopers, aes(x=Sex, y = Tail, group=Sex, fill=Sex)) +
+	geom_boxplot() +
+	theme_bw()
+
+p2a + p2b
+
+#ggsave("tumor.png")
+
+```
+
+```{r Tail_t-test}
+t.test(Tail ~ Sex, data = hawks_Coopers)
+```
+
+Results statement goes here.....
+
+### Question 3
+
+**Wing Length of Red-tailed Hawks**
+
+<img src="pics/red-tailed2.jpg" width="400"/>
+
+1.  Is there a relationship between body mass (g) and wing length (mm)
+    for Red-tailed Hawks?
+
+2.  Make a figure showing the relationship.
+
+3.  What is the predicted wing length of Red-tailed Hawk with a body
+    mass of 1000g?
+
+4.  Present the results of this analysis as you would see in a
+    scientific journal article.
+
+```{r filter redtailed}
+hawks_redtailed <- hawks %>%
+  filter(Species == "Red-tailed")
+```
+
+```{r redtailed_figures, message=FALSE, warning=FALSE, fig.height=4, fig.width=6}
+p3 <- ggplot(hawks_redtailed, aes(x = Mass_g, y = Wing)) +
+	geom_point() +
+	geom_smooth(method = 'lm') +
+	ylab("Wing Length (mm)") +
+	theme_bw()
+
+p3
+
+#ggsave("phytoplankton.png")
+```
+
+```{r predict_analysis}
+model_redtailed <- lm(Wing ~ Mass_g, data=hawks_redtailed)
+
+summary(model_redtailed)
+
+#mean(hawks_redtailed$Mass_g, na.rm = TRUE)
+
+new <- data.frame(Mass_g=c(1000)) 
+
+predict(model_redtailed, new)
+```
+
+Results statement goes here.....
+
+### Question 4
+
+**Hawk Observations Across Years: Re-create Figure**
+
+Use the `hawks.csv` file for analyses. You probably already have it
+imported for answering the other questions.
+
+Re-create the following figure using `ggplot`. You will have to
+summarize the data with `dplyr` before plotting. Use `geom_line()` to
+connect dots.
+
+```{r hawk populations, message=FALSE, warning=FALSE, include=TRUE}
+
+hawk_pop <- hawks %>%
+	group_by (Species, Year) %>%
+	summarise(nHawks = n())	#note empty parenthesis
+	     
+pops <- ggplot(hawk_pop, aes(Year, nHawks, color=Species))+
+  geom_point() +
+  geom_line() +
+  facet_wrap(~ Species, ncol = 1) +
+  ylab("Number of Observations") +
+  theme(legend.position="none")
+pops
+```
+
+### Question 5
+
+**Hawk Morphometrics: Re-create Summary Table**
+
+<img src="pics/culmen.jpg" width="400"/>
+
+Re-create the following summary table with `dplyr` and the `hawks`
+dataset. Report the number of immature (I) and adult (A) individuals of
+each species, and their respective mean lengths of wing, tail, and
+culmen.
+
+```{r summary table, message=FALSE, warning=FALSE, include=TRUE}
+library(knitr)
+
+hawks%>%
+	group_by (Species, Age) %>%
+	summarise(
+	     num_obs = n(),	#note empty parenthesis
+	     meanWing = mean(Wing),
+	     meanTail = mean(Tail),
+	     meanCulmen = mean(Culmen))
+
+```
