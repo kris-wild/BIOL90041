@@ -34,42 +34,6 @@ library(introverse) # if you want :)
 <br>
 
 ## LETS GET STARTED!
-### Working with varibles
-Define two variables, `apple_price` (0.75) and `orange_price` (0.65), then define `num_apples` (10) and `num_oranges` (8). Compute the **total cost** using only these variables (combine and multiply accordingly).
-
-```{r variables_q5-solution}
-apple_price  <- 0.75
-orange_price <- 0.65
-num_apples   <- 10
-num_oranges  <- 8
-
-total_cost <- apple_price * num_apples + orange_price * num_oranges
-# Print to confirm:
-total_cost
-```
-
-<div class = "prompt">Now, using the previously defined `banana_price`, use `rep()` to create a vector `prices` that repeats the banana price 5 times. Then **divide** each element of `prices` by 2 and print the result.</div>
-
-+ Hint: Use `rep(banana_price, times = 5)` to build your vector, and remember that dividing a numeric vector by a scalar applies the operation element-wise.
-
-
-
-```{r variables_q6-solution}
-banana_price <- 0.55
-
-# repeat the banana_price 5 times
-prices <- rep(banana_price, times = 5)
-
-# divide each by 2 and print
-prices / 2
-```
-<br>
-
----
-
-<br>
-
-
 ### Handling dataframes
 The so you know the `msleep` dataset is pre-loaded from the `tidyverse` package. So it's a pre-loaded dataset called `msleep`. Just type `msleep` in your console... Give it ago! This data set  provides different physical and behavioral characteristics of mammals, including how much they sleep. Below is information about the data or what we call 'metadata'  
 
@@ -525,9 +489,30 @@ msleep %>%
   drop_na()
 ``` 
 
-<br><br>
+<br>
+
+---
+
+<br>
+
+
 
 ## EXTRA Questions... Are you a pro?
+<div class = "prompt">Now, using the previously defined `banana_price`, use `rep()` to create a vector `prices` that repeats the banana price 5 times. Then **divide** each element of `prices` by 2 and print the result.</div>
+
++ Hint: Use `rep(banana_price, times = 5)` to build your vector, and remember that dividing a numeric vector by a scalar applies the operation element-wise.
+
+
+
+```{r variables_q6-solution}
+banana_price <- 0.55
+
+# repeat the banana_price 5 times
+prices <- rep(banana_price, times = 5)
+
+# divide each by 2 and print
+prices / 2
+```
 
 <div class = "prompt">  Use all your skills to wrangle the data to arrive at the answer to this question: Which group has the highest average body weight: herbivores or insectivores? </div>
 
@@ -557,3 +542,36 @@ msleep %>%
   mutate(ratio = bodywt/brainwt) %>%
   summarise(mean_ratio = mean(ratio)) # answer: domesticated
 ```
+
+
+<br>
+
+---
+
+<br>
+
+
+
+## Your project data
+Now that you're getting the hang of things lets start playing around with your project data. But first.... How do I find my data? Well thats the beauty of the structure of a R project. You minimize the working directory nonsense. That many people struggle with when they start R. It also makes it way easier to share with collaborators!
+
+So real quick see where you're working by typing 
+```
+getwd() 
+```
+if you created your project on your desktop you should be in the folder 'Data_Science_for_Biologists'. Now be sure that you have your data in your 'data' folder. 
+![YOU ARE HERE](workshop_images/files.png "You are here")
+
+Each dataset should be saved as a .csv file. To read these in we need to use the right function and point R in the right direction. This should be simple try running this code: 
+```
+# read in data example
+data <- read.csv('Data/xxxxxx')
+```
+**SHORT CUT** a cool trick is after you put in your `read.csv()` function with the '' in the (). Try pressing tab... This will bring up all of the folder options and will allow you to scroll through your project find things quickly!
+
+
+## Have a look at your data! 
+Now using the functions we just went through, have a look at your data! No need to worry about 'messing' things up! Try inspecting your data, filtering, 
+
+![](workshop_images/dplyr.png "")
+
