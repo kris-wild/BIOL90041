@@ -14,4 +14,4 @@ render_workshop <- function(rmd, out_dir) {
 # Render every workshop
 render_workshop("Week_2/Workshop/dplyr.Rmd",   "docs/week2-workshop")
 render_workshop("Week_3/Workshop/tidy_1.Rmd",  "docs/week3-tidy1")
-render_workshop("Week_4/Workshop/tidy_2.Rmd",  "docs/week4-tidy2")
+#render_workshop("Week_4/Workshop/tidy_2.Rmd",  "docs/week4-tidy2")
