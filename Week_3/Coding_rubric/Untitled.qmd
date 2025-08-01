@@ -1,0 +1,20 @@
+---
+title: "kristoffer wild example"
+format: docx
+editor: visual
+---
+
+## Libraries
+
+```{r}
+#| echo: false
+2 * 2
+```
+
+## Lecture function examples:
+
+Example 1: Here I demonstrate R's built-in `log()` function with an arbitrary base. `log(x, base)` computes the power to which `base` must be raised to obtain `x`, using the identity:
+
+```{r}
+log(8, base = 100)
+```

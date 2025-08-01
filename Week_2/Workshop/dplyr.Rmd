@@ -14,7 +14,7 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, eval=FALSE)
-library(tidyverse)
+library(tidyverse) 
 ```
 
 ## Setup
@@ -22,7 +22,7 @@ library(tidyverse)
 To do these exercises, you will need to the `tidyverse` library. Lets go ahead and start with the script you have created in your R project. You will want to *save* this script for future reference, and start with this code to begin:
 
 ```loadlibs
-library(tidyverse)
+library(tidyverse) # packages used for data manipulation 
 library(introverse) # if you want :)
 ```
 
@@ -33,34 +33,7 @@ library(introverse) # if you want :)
 
 <br>
 
-## LETS GET WARMED UP!
-### Using R as a calculator
-R calculator: What is 5 times 6?
-+ Hint:  Use the asterisk `*` to multiply numbers
-
-
-```{r calc_q1-solution}
-5*6
-```
-
-<div class = "prompt"> R calculator: What is 138 squared?</div>
-
-+ Hint:  Use the carot symbol `^` *or* two asterisks (`**`) to raise numbers to an exponent.
-
-
-```{r calc_q3-solution, collapse=TRUE}
-138**2 
-
-# Equally valid approach
-138^2 
-```
-<br>
-
----
-
-<br>
-
-
+## LETS GET STARTED!
 ### Working with varibles
 Define two variables, `apple_price` (0.75) and `orange_price` (0.65), then define `num_apples` (10) and `num_oranges` (8). Compute the **total cost** using only these variables (combine and multiply accordingly).
 
@@ -97,79 +70,6 @@ prices / 2
 <br>
 
 
-### Handling arrays 
-We can also perform logical operations in a vectorized context. The code below asks if all values in `example_array` are greater than 0. Engage with and understand this code, and then modify the the code to instead ask if every item is **equal to 0** (again, be careful not to delete the `example_array` definition when modifying!).
-
-+ Note: This type of output would be referred to as a *logical array* - it is an array of `TRUE` or `FALSE` values.
-
-
-```array_q7
-example_array <- c(5, 78, -3, 1, 6, 0)
-example_array > 0
-``` 
-```{r array_q7-solution}
-example_array <- c(5, 78, -3, 1, 6, 0)
-# All are FALSE except the last entry 
-example_array == 0
-```
-
-
-One of the most POWERFUL logical operators is `%in%` - it's literally the word `in` enclosed by `%`. You can use it to ask if a given value is present *in* an array. 
-
-Here is an example of this logical operator in action. Notice how **helpful** it is that I added the extra print statements so you know for sure what is being printed when!
-
-```in_example
-# Define array
-rainbow <- c("red", "orange", "yellow", "green", "blue", "indigo", "violet")
-
-# Will return TRUE
-print("Is 'red' in the rainbow array?")
-"red" %in% rainbow
-
-# Will return FALSE
-print("Is 'black' in the rainbow array?")
-"black" %in% rainbow
-
-# This is _not_ The Way 
-# It asks: Is each value in rainbow equal to "red"?
-# This code technically works, but is not at all the same as using %in%
-print("Does 'red' equal the whole rainbow array?")
-"red" == rainbow
-```
-
-<div class = "prompt">The code below defines an array of different animals. Use the `%in%` operator to ask three separate logical questions:</div>
-
-+ Is "goat" in this array? 
-+ Is "marmoset" in this array?
-+ Is "GOAT" in this array? *What does the answer to this code tell you about the importance of letter case??*
-
-+ Hint: Case (uppercase and lowercase letters) matters. "goat" and "GOAT" are totally different.
-
-```array_logic_q1
-animals <- c("goat", "turtle", "axolotl", "hyena", "coral")
-```  
-
-```{r array_logic_q1-solution}
-animals <- c("goat", "turtle", "axolotl", "hyena", "coral")
-"goat" %in% animals
-"marmoset" %in% animals
-"GOAT" %in% animals
-``` 
-
-<div class = "prompt">Define an array with all values 50-500 using the colon `:`. Then, use the `%in%` operator to ask if the value -25 is in this array. </div>
-
- 
-```{r array_logic_q2-solution}
-many_numbers <- 50:500 
--25 %in% many_numbers
-```  
-<br>
-
----
-
-<br>
-
-
 ### Handling dataframes
 The so you know the `msleep` dataset is pre-loaded from the `tidyverse` package. So it's a pre-loaded dataset called `msleep`. Just type `msleep` in your console... Give it ago! This data set  provides different physical and behavioral characteristics of mammals, including how much they sleep. Below is information about the data or what we call 'metadata'  
 
@@ -179,9 +79,9 @@ The so you know the `msleep` dataset is pre-loaded from the `tidyverse` package.
 - **Usage:** `msleep`  
 - **Format:** A data frame with 83 rows and 11 variables:  
   - `name`: Common name  
-  - `genus`  
+  - `genus`:genus of animal
   - `vore`: Carnivore, omnivore, or herbivore?  
-  - `order`  
+  - `order`: order of animal
   - `conservation`: Conservation status of the animal  
   - `sleep_total`: Total amount of sleep (hours)  
   - `sleep_rem`: REM sleep (hours)  
