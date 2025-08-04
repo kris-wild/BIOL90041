@@ -571,7 +571,7 @@ data <- read.csv('Data/xxxxxx')
 
 
 ## Have a look at your data! 
-Now using the functions we just went through, have a look at your data! No need to worry about 'messing' things up! Try inspecting your data, filtering, 
+Now using the functions we just went through, have a look at your data! No need to worry about 'messing' things up! Try inspecting your data using the dplyr functions!
 
 ![](workshop_images/dplyr.png "")
 
