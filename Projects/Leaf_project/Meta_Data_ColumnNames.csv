@@ -2,6 +2,7 @@
 variable,description
 Latin_name,latin name of plant
 Family,plant family
+SampleID,individual sample id
 Leaf,leaf replicate monitored
 Tair_(˚C),air temperture
 RH_(%),relative humidity
