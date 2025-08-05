@@ -1,0 +1,9 @@
+﻿Data_label,Trait_name,Description,Description_full,Type,Units
+ah,Age_hatching,age at h,age at hatching (leaving egg),Numeric,d
+ah_T,Age_hatching_T,age at h (several T)),age at hatching (leaving egg) (several T)),Numeric,d
+ab,Age_birth,age at birth,age at birth (start of feeding),Numeric,d
+ab_T,Age_birth_T,age at birth (several T),age at birth (start of feeding) (several T),Numeric,d
+ab_f,Age_birth_f,age at birth (several f),age at birth (start of feeding) (several f),Numeric,d
+tg,Gestation_time,gestation time,gestation time,Numeric,d
+ax,Age_weaning,age at x,age at weaning (or fledging),Numeric,d
+as,Age_start_acceleration,age at s,age at start of acceleration,Numeric,d
