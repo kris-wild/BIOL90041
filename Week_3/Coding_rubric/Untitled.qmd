@@ -11,10 +11,46 @@ editor: visual
 2 * 2
 ```
 
-## Lecture function examples:
+## Example: Filtering out extreme distance outliers (histogram)
 
-Example 1: Here I demonstrate R's built-in `log()` function with an arbitrary base. `log(x, base)` computes the power to which `base` must be raised to obtain `x`, using the identity:
+We’ll compare flight distances before/after removing unrealistic values (> 5000 miles).
 
 ```{r}
-log(8, base = 100)
+#| message: false
+#| fig.width: 8
+#| fig.height: 4
+
+library(dplyr)
+library(nycflights13)
+
+# Put two plots side-by-side
+par(mfrow = c(1, 2))
+
+## ---- Before cleaning ----
+hist(
+  flights$distance,
+  breaks = seq(0, 10000, by = 100),   # consistent binning
+  main = "Before Cleaning",
+  xlab  = "Distance (miles)",
+  xlim  = c(0, 10000)                 # shows long right tail
+)
+
+## ---- After cleaning ----
+filtered <- flights %>%
+  filter(distance < 5000) %>%
+  pull(distance)
+
+hist(
+  filtered,
+  breaks = seq(0, 10000, by = 100),   # same bins for fair comparison
+  main = "After Cleaning",
+  xlab  = "Distance (miles)",
+  xlim  = c(0, 10000)
+)
+
+# Reset plotting layout
+par(mfrow = c(1, 1))
 ```
+
+
+
