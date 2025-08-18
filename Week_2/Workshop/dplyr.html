@@ -1730,9 +1730,9 @@ and understand it, and then modify it to extract the <code>awake</code>
 column instead.</p>
 <pre class="msleep_q1"><code>msleep$name</code></pre>
 <div class="prompt">
-Use the dollar-sign <code>$</code> to extract the <code>name</code>
+<p>Use the dollar-sign <code>$</code> to extract the <code>name</code>
 column from the <code>msleep</code> data frame, then extract the
-<code>awake</code> column. Print both to confirm your result.
+<code>awake</code> column. Print both to confirm your result.</p>
 </div>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="co"># extract and print the name column</span></span>
 <span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>msleep<span class="sc">$</span>name</span>
@@ -1740,9 +1740,9 @@ column from the <code>msleep</code> data frame, then extract the
 <span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="co"># extract and print the awake column</span></span>
 <span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>msleep<span class="sc">$</span>awake</span></code></pre></div>
 <div class="prompt">
-Now figure out how to count how many missing values (<code>NA</code>)
+<p>Now figure out how to count how many missing values (<code>NA</code>)
 are in the <code>sleep_rem</code> column, then display the rows that
-contain these <code>NA</code>s.
+contain these <code>NA</code>s.</p>
 </div>
 <ul>
 <li>Hint: Use function <code>is.na()</code> to create a logical vector
@@ -1782,8 +1782,8 @@ head(msleep)</code></pre>
 <div id="subsetting-rows-with-filter" class="section level3">
 <h3>Subsetting rows with <code>filter()</code></h3>
 <div class="prompt">
-Use <code>filter()</code> to subset <code>msleep</code> to only
-herbivores.
+<p>Use <code>filter()</code> to subset <code>msleep</code> to only
+herbivores.</p>
 </div>
 <ul>
 <li>Hint: The <code>vore</code> column will tell you if a mammal is an
@@ -1795,8 +1795,8 @@ a STRING, not a variable!</li>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>msleep <span class="sc">%&gt;%</span></span>
 <span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>  <span class="fu">filter</span>(vore <span class="sc">==</span> <span class="st">&quot;herbi&quot;</span>)</span></code></pre></div>
 <div class="prompt">
-Use <code>filter()</code> to subset <code>msleep</code> to only animals
-who are <em>awake</em> for at least 12 hours of the day.
+<p>Use <code>filter()</code> to subset <code>msleep</code> to only
+animals who are <em>awake</em> for at least 12 hours of the day.</p>
 </div>
 <ul>
 <li>Hint: “At least” like saying “greater than or equal to,”
@@ -1805,9 +1805,9 @@ i.e. <code>&gt;=</code></li>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>msleep <span class="sc">%&gt;%</span></span>
 <span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>  <span class="fu">filter</span>(awake <span class="sc">&gt;=</span> <span class="dv">12</span>)</span></code></pre></div>
 <div class="prompt">
-Use <code>filter()</code> to subset <code>msleep</code> to only
+<p>Use <code>filter()</code> to subset <code>msleep</code> to only
 <em>herbivores</em> who are <em>awake</em> for at least 12 hours of the
-days.
+days.</p>
 </div>
 <ul>
 <li>Hint: <code>dplyr</code> makes it easy to supply “and” conditions to
@@ -1818,11 +1818,11 @@ writing: <code>filter(statement1 &amp; statement2)</code>.</li>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>msleep <span class="sc">%&gt;%</span></span>
 <span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>  <span class="fu">filter</span>(vore <span class="sc">==</span> <span class="st">&quot;herbi&quot;</span>, awake <span class="sc">&gt;=</span> <span class="dv">12</span>)</span></code></pre></div>
 <div class="prompt">
-The code below uses <code>filter()</code> to subset <code>msleep</code>
-to include only <em>herbivores and insectivores</em>, using the
-<code>%in%</code> logical operator to help craft the statement. Engage
-with and understand the code, and modify it to subset the data to keep
-only <em>herbivores and carnivores</em>.
+<p>The code below uses <code>filter()</code> to subset
+<code>msleep</code> to include only <em>herbivores and
+insectivores</em>, using the <code>%in%</code> logical operator to help
+craft the statement. Engage with and understand the code, and modify it
+to subset the data to keep only <em>herbivores and carnivores</em>.</p>
 </div>
 <ul>
 <li>Hint: You can do this in multiple ways. Try it out! Either…</li>
@@ -1843,8 +1843,8 @@ equal “herbi” or if <code>vore</code> equals “insecti”</li>
 <span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a>msleep <span class="sc">%&gt;%</span></span>
 <span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a>  <span class="fu">filter</span>(vore <span class="sc">==</span> <span class="st">&quot;herbi&quot;</span> <span class="sc">|</span> vore <span class="sc">==</span>  <span class="st">&quot;carni&quot;</span>)</span></code></pre></div>
 <div class="prompt">
-Use <code>filter()</code> to subset the data to only carnivores who
-weigh more than 50 kg.
+<p>Use <code>filter()</code> to subset the data to only carnivores who
+weigh more than 50 kg.</p>
 </div>
 <ul>
 <li>Hint: mammals that are carnivores <em>and</em> that weigh more than
@@ -1856,9 +1856,9 @@ weigh more than 50 kg.
 <div id="subsetting-columns-with-select" class="section level3">
 <h3>Subsetting columns with <code>select()</code></h3>
 <div class="prompt">
-Use <code>select()</code> to keep only the columns <code>name</code>,
+<p>Use <code>select()</code> to keep only the columns <code>name</code>,
 <code>awake</code>, <code>sleep_total</code>, <code>sleep_rem</code>,
-and <code>sleep_cycle</code>.
+and <code>sleep_cycle</code>.</p>
 </div>
 <ul>
 <li>Hint: Simply list the columns (without quotes!) in select. No need
@@ -1867,8 +1867,8 @@ to use <code>c()</code>.</li>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a>msleep <span class="sc">%&gt;%</span></span>
 <span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>  <span class="fu">select</span>(name, awake, sleep_total, sleep_rem, sleep_cycle)</span></code></pre></div>
 <div class="prompt">
-Use <code>select()</code> to <em>remove</em> the columns
-<code>genus</code> and <code>order</code>.
+<p>Use <code>select()</code> to <em>remove</em> the columns
+<code>genus</code> and <code>order</code>.</p>
 </div>
 <ul>
 <li>Hint: To remove a column, preface it with the minus sign.</li>
@@ -1901,7 +1901,7 @@ that it will count your rows and return a tibble:</em></li>
 <pre class="demo-tally"><code>msleep %&gt;%
   tally()</code></pre>
 <div class="prompt">
-Answer the question: How many mammals weigh more than 2000 kg?
+<p>Answer the question: How many mammals weigh more than 2000 kg?</p>
 </div>
 <ul>
 <li>To answer this, we’d use <code>filter()</code> to get only the rows
@@ -1921,18 +1921,18 @@ computer to do it for us! Eyeballs are not reproducible.</strong></li>
 </div>
 <div id="creating-new-columns-with-mutate" class="section level3">
 <h3>Creating new columns with <code>mutate()</code></h3>
-What does mutate do? <code>mutate()</code> adds new or modifies existing
-columns in a data frame by computing values based on existing variables
-or constants. It returns the full data frame with those new or updated
-columns, making it easy to build up a sequence of transformations in a
-single <code>%&gt;%</code> pipeline.
+<p>What does mutate do? <code>mutate()</code> adds new or modifies
+existing columns in a data frame by computing values based on existing
+variables or constants. It returns the full data frame with those new or
+updated columns, making it easy to build up a sequence of
+transformations in a single <code>%&gt;%</code> pipeline.</p>
 <div class="prompt">
-The code below uses <code>mutate()</code> to create a new column called
-<code>bodywt_g</code> which contains the body weight but in grams
+<p>The code below uses <code>mutate()</code> to create a new column
+called <code>bodywt_g</code> which contains the body weight but in grams
 instead of kg, as is recorded in the existing <code>bodywt</code>
 column. Engage with this code, and then modify it to instead create a
 new variable called <code>bodywt_lbs</code> which contains the body
-weight in pounds (1 kg = 2.2 lbs).
+weight in pounds (1 kg = 2.2 lbs).</p>
 </div>
 <ul>
 <li>Hint: This question shows you that you can directly refer to and use
@@ -1951,10 +1951,10 @@ pipeline to make sure your code worked as intended?</li>
 <span id="cb18-7"><a href="#cb18-7" tabindex="-1"></a>  <span class="co"># selecting both of these columns will help you confirm that bodywt_lbs=2.2*bodywt</span></span>
 <span id="cb18-8"><a href="#cb18-8" tabindex="-1"></a>  <span class="fu">select</span>(bodywt_lbs, bodywt)</span></code></pre></div>
 <div class="prompt">
-Use <code>mutate()</code> to create a new column called
+<p>Use <code>mutate()</code> to create a new column called
 <code>percent_day_awake</code> that gives the percentage of the day that
 each species spends awake, and use <code>select()</code> at the end to
-make sure your calculations worked.
+make sure your calculations worked.</p>
 </div>
 <ul>
 <li>Hint: There are 24 hours in a day, and the column <code>awake</code>
@@ -1971,8 +1971,8 @@ says how many hours a day (on average) that species is awake. So,
 <h3>Organizing data frames with <code>rename()</code> and
 <code>arrange()</code></h3>
 <div class="prompt">
-Use <code>rename()</code> to change the name of the column
-<code>conservation</code> to <code>conservation_status</code>.
+<p>Use <code>rename()</code> to change the name of the column
+<code>conservation</code> to <code>conservation_status</code>.</p>
 </div>
 <ul>
 <li>Hint: <code>rename()</code> syntax is:
@@ -1985,8 +1985,8 @@ probably will too! Just remember if there are bugs, it’s
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a>msleep <span class="sc">%&gt;%</span></span>
 <span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">conservation_status =</span> conservation)</span></code></pre></div>
 <div class="prompt">
-Use <code>arrange()</code> to sort the dataset in <em>ascending</em>
-order of <code>bodywt</code>.
+<p>Use <code>arrange()</code> to sort the dataset in <em>ascending</em>
+order of <code>bodywt</code>.</p>
 </div>
 <ul>
 <li>Hint: <code>arrange()</code> sorts in ascending order by
@@ -1995,8 +1995,8 @@ default</li>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a>msleep <span class="sc">%&gt;%</span></span>
 <span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a>  <span class="fu">arrange</span>(bodywt)</span></code></pre></div>
 <div class="prompt">
-Use <code>arrange()</code> to sort the dataset in <em>descending</em>
-order of <code>bodywt</code>.
+<p>Use <code>arrange()</code> to sort the dataset in <em>descending</em>
+order of <code>bodywt</code>.</p>
 </div>
 <ul>
 <li>Hint: Use <code>desc()</code> to sort by descending order of a
@@ -2006,8 +2006,8 @@ column instead of just writing the column name, like:
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a>msleep <span class="sc">%&gt;%</span></span>
 <span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(bodywt))</span></code></pre></div>
 <div class="prompt">
-Use <code>rename()</code> to change the name of the column
-<code>vore</code> to <code>food_preference</code>.
+<p>Use <code>rename()</code> to change the name of the column
+<code>vore</code> to <code>food_preference</code>.</p>
 </div>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a>msleep <span class="sc">%&gt;%</span></span>
 <span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">food_preference =</span> vore)</span></code></pre></div>
@@ -2023,10 +2023,10 @@ interesting yet since there are no duplicate rows in
 <pre class="demo-distinct"><code>msleep %&gt;%
   distinct()</code></pre>
 <div class="prompt">
-Modify the pipeline below to only keep distinct rows at the end. First,
-engage with to understand which duplicate rows you expect will be
+<p>Modify the pipeline below to only keep distinct rows at the end.
+First, engage with to understand which duplicate rows you expect will be
 removed. Finally, you also remove all combinations in the result with
-<code>NA</code>?
+<code>NA</code>?</p>
 </div>
 <pre class="demo-distinct2"><code>msleep %&gt;%
   select(vore, conservation)</code></pre>
@@ -2048,10 +2048,11 @@ together</h2>
 part of the solution.</p>
 </blockquote>
 <div class="prompt">
-Use <code>filter()</code> to subset <code>msleep</code> to only primate
-species (order is “Primates”) whose conservation status is least concern
-(“lc”) (two things to filter!!), and then use <code>rename()</code> to
-change the column <code>vore</code> to be called <code>diet</code>.
+<p>Use <code>filter()</code> to subset <code>msleep</code> to only
+primate species (order is “Primates”) whose conservation status is least
+concern (“lc”) (two things to filter!!), and then use
+<code>rename()</code> to change the column <code>vore</code> to be
+called <code>diet</code>.</p>
 </div>
 <ul>
 <li>Hint: There are two things to filter on here! Remember to use a
@@ -2061,10 +2062,10 @@ comma within <code>filter()</code> to specify them both.</li>
 <span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a>  <span class="fu">filter</span>(order <span class="sc">==</span> <span class="st">&quot;Primates&quot;</span>, conservation <span class="sc">==</span> <span class="st">&quot;lc&quot;</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb27-3"><a href="#cb27-3" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">diet =</span> vore)</span></code></pre></div>
 <div class="prompt">
-Subset the data to contain only carnivores with body weights greater
+<p>Subset the data to contain only carnivores with body weights greater
 than 50 kg. Then, arrange the data in ascending order of body weight.
 Finally, keep only columns <code>name</code>, <code>bodywt</code>,
-<code>brainwt</code> in that order.
+<code>brainwt</code> in that order.</p>
 </div>
 <ul>
 <li>For an added challenge, <em>simultaneously rename</em> the column
@@ -2082,10 +2083,10 @@ Finally, keep only columns <code>name</code>, <code>bodywt</code>,
 <span id="cb28-9"><a href="#cb28-9" tabindex="-1"></a>  <span class="fu">arrange</span>(bodywt) <span class="sc">%&gt;%</span></span>
 <span id="cb28-10"><a href="#cb28-10" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">common_name =</span> name, bodywt, brainwt)</span></code></pre></div>
 <div class="prompt">
-Engage with the templated code below, whose goal is to show just the
+<p>Engage with the templated code below, whose goal is to show just the
 <code>bodywt</code> and <code>name</code> columns for all mammals whose
 brain weight is less than 2. Alas, the code has a bug! Can you figure
-out <em>WHY</em> the code has a bug and fix the code?
+out <em>WHY</em> the code has a bug and fix the code?</p>
 </div>
 <ul>
 <li>Hint: What lessons did you just learn in the previous question?
@@ -2099,11 +2100,11 @@ Apply them here!</li>
 <span id="cb30-3"><a href="#cb30-3" tabindex="-1"></a>  <span class="fu">filter</span>(brainwt <span class="sc">&lt;</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb30-4"><a href="#cb30-4" tabindex="-1"></a>  <span class="fu">select</span>(bodywt, name) </span></code></pre></div>
 <div class="prompt">
-Now, let’s finally see why <code>distinct()</code> is a helpful
+<p>Now, let’s finally see why <code>distinct()</code> is a helpful
 function. We want to answer this question using a <code>dplyr</code>
 framework: What are the unique vores in the dataset? To address this
 question, we need to first subset the data to only contain the
-<code>vore</code> column, and then use <code>distinct()</code>:
+<code>vore</code> column, and then use <code>distinct()</code>:</p>
 </div>
 <ul>
 <li>Engage with the code below, and understand <em>why I had to write it
@@ -2114,10 +2115,10 @@ unique rows and then select only <code>vore</code>.</li>
   select(vore) %&gt;%
   distinct()</code></pre>
 <div class="prompt">
-Subset <code>msleep</code> to arrive at a tibble that contains just the
-column <code>vore</code> and shows only the unique vores that mammals of
-the order <code>&quot;Carnivora&quot;</code> belong to. In other words, what do
-carnivores eat? (The answer should make some sense…)
+<p>Subset <code>msleep</code> to arrive at a tibble that contains just
+the column <code>vore</code> and shows only the unique vores that
+mammals of the order <code>&quot;Carnivora&quot;</code> belong to. In other words,
+what do carnivores eat? (The answer should make some sense…)</p>
 </div>
 <ul>
 <li>Hint: You first want to filter to the rows of interest
@@ -2135,25 +2136,26 @@ that group.</li>
 <div id="dplyr-set-3-summarizing-data-with-dplyr" class="section level2">
 <h2>dplyr Set 3: Summarizing data with <code>dplyr</code></h2>
 <div class="prompt">
-Use <code>summarise()</code> to create a summarised dataframe with a
+<p>Use <code>summarise()</code> to create a summarised dataframe with a
 column <code>mean_awake</code> that contains the mean number of hours
-spent awake.
+spent awake.</p>
 </div>
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a>msleep <span class="sc">%&gt;%</span></span>
 <span id="cb33-2"><a href="#cb33-2" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_awake =</span> <span class="fu">mean</span>(awake))</span></code></pre></div>
 <div class="prompt">
-Perform the same exact task as the last question, except this time use
-<code>mutate()</code> rather than <code>summarise()</code>. The goal of
-this question is so you can see clearly how mutate and summarise differ.
+<p>Perform the same exact task as the last question, except this time
+use <code>mutate()</code> rather than <code>summarise()</code>. The goal
+of this question is so you can see clearly how mutate and summarise
+differ.</p>
 </div>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" tabindex="-1"></a>msleep <span class="sc">%&gt;%</span></span>
 <span id="cb34-2"><a href="#cb34-2" tabindex="-1"></a>  <span class="co"># Now we have a whole column where all rows have the same value.</span></span>
 <span id="cb34-3"><a href="#cb34-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mean_awake =</span> <span class="fu">mean</span>(awake))</span></code></pre></div>
 <div class="prompt">
-Use <code>summarise()</code> and <code>mean()</code> to determine the
+<p>Use <code>summarise()</code> and <code>mean()</code> to determine the
 average amount of time spent in REM sleep (column
 <code>sleep_rem</code>) by all mammals in the dataset
-<code>msleep</code>.
+<code>msleep</code>.</p>
 </div>
 <ul>
 <li>Make sure to give your new column an informative name!</li>
@@ -2166,9 +2168,9 @@ function <code>mean()</code> to ignore NA’s with the extra argument
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a>msleep <span class="sc">%&gt;%</span></span>
 <span id="cb35-2"><a href="#cb35-2" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_rem =</span> <span class="fu">mean</span>(sleep_rem, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span></code></pre></div>
 <div class="prompt">
-Use <code>group_by()</code> calculate the median (with
+<p>Use <code>group_by()</code> calculate the median (with
 <code>summarise()</code> and <code>median()</code>!) body weight
-(<code>bodywt</code>) of each <code>vore</code> group.
+(<code>bodywt</code>) of each <code>vore</code> group.</p>
 </div>
 <ul>
 <li>Make sure to give your new column an informative name!</li>
@@ -2180,9 +2182,9 @@ Use <code>group_by()</code> calculate the median (with
 <span id="cb36-2"><a href="#cb36-2" tabindex="-1"></a>  <span class="fu">group_by</span>(vore) <span class="sc">%&gt;%</span></span>
 <span id="cb36-3"><a href="#cb36-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">med_bodywt =</span> <span class="fu">median</span>(bodywt))</span></code></pre></div>
 <div class="prompt">
-Use <code>group_by()</code> calculate the mean body weight
+<p>Use <code>group_by()</code> calculate the mean body weight
 (<code>bodywt</code>) of each <em>combination</em> of <code>vore</code>
-and <code>conservation</code> groups.
+and <code>conservation</code> groups.</p>
 </div>
 <ul>
 <li>You can specify multiple groupings to <code>group_by()</code> just
@@ -2201,10 +2203,10 @@ by listing the columns.</li>
 <div id="extra-questions-are-you-a-pro" class="section level2">
 <h2>EXTRA Questions… Are you a pro?</h2>
 <div class="prompt">
-Now, using the previously defined <code>banana_price</code>, use
+<p>Now, using the previously defined <code>banana_price</code>, use
 <code>rep()</code> to create a vector <code>prices</code> that repeats
 the banana price 5 times. Then <strong>divide</strong> each element of
-<code>prices</code> by 2 and print the result.
+<code>prices</code> by 2 and print the result.</p>
 </div>
 <ul>
 <li>Hint: Use <code>rep(banana_price, times = 5)</code> to build your
@@ -2219,9 +2221,9 @@ the operation element-wise.</li>
 <span id="cb38-6"><a href="#cb38-6" tabindex="-1"></a><span class="co"># divide each by 2 and print</span></span>
 <span id="cb38-7"><a href="#cb38-7" tabindex="-1"></a>prices <span class="sc">/</span> <span class="dv">2</span></span></code></pre></div>
 <div class="prompt">
-Use all your skills to wrangle the data to arrive at the answer to this
-question: Which group has the highest average body weight: herbivores or
-insectivores?
+<p>Use all your skills to wrangle the data to arrive at the answer to
+this question: Which group has the highest average body weight:
+herbivores or insectivores?</p>
 </div>
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" tabindex="-1"></a><span class="co"># There are MANY WAYS to arrive at this solution! Below is one good option:</span></span>
 <span id="cb39-2"><a href="#cb39-2" tabindex="-1"></a>msleep <span class="sc">%&gt;%</span></span>
@@ -2230,11 +2232,11 @@ insectivores?
 <span id="cb39-5"><a href="#cb39-5" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_bodywt =</span> <span class="fu">mean</span>(bodywt)) <span class="sc">%&gt;%</span></span>
 <span id="cb39-6"><a href="#cb39-6" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(mean_bodywt)) <span class="co"># answer: herbivores!</span></span></code></pre></div>
 <div class="prompt">
-Use all your skills to wrangle the data to arrive at the answer to this
-question: Which group has the highest <strong>average ratio</strong> of
-body weight to brain weight: domesticated or non-domesticated mammals?
-<em>Make sure to PLAN your steps before coding them. When coding, go
-LINE by LINE.</em>
+<p>Use all your skills to wrangle the data to arrive at the answer to
+this question: Which group has the highest <strong>average
+ratio</strong> of body weight to brain weight: domesticated or
+non-domesticated mammals? <em>Make sure to PLAN your steps before coding
+them. When coding, go LINE by LINE.</em></p>
 </div>
 <ul>
 <li>Hint: <code>if_else()</code> will be useful here!</li>

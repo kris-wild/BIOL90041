@@ -19,55 +19,49 @@ library(tidyverse)
 
 ## Setup
 
-For this weeks workshop we will be exploring your project data!!! Make sure you are in your respective groups (bandicoot group, plant group, genetics group... have I missed anyone?). Today we will use the same `dplyr` verbs from workshop 1 to begin cleaning up your data. We I'll give you 40 mins to do this. After the 40 mins is up each group will come up to the class to walk through an example of a problem with their data and their solution (\~20 min). The idea here is to get comfortable speaking the R 'language' and also to see how there are different ways to solve the same problem in R!
+For this weeks workshop we will be exploring your project data!!! Make sure you are in your respective groups (bandicoot group, plant group, genetics group... have I missed anyone?). Today we will use the same `dplyr` verbs from workshop 1 to begin cleaning up your data. We I'll give you 40 mins to do this. After the 40 mins is up each group will come up to the class to walk through an example of a problem with their data and their solution (\~20 min). [Write at least one problem with your data that you do not have a solution for (we can discuss how to troubleshoot with the class).]{.underline} The idea here is to get comfortable speaking the R 'language' and also to see how there are different ways to solve the same problem in R!
 
 ![](workshop_images/cleaning.png)
 
 <br>
 
----
+------------------------------------------------------------------------
 
 <br>
-
 
 ## Step 1: Get organised
 
 First before we get into your project data create a new R project and within your project have a folder (maybe call it data?) for your `.csv` files, and script called 'workshop_2_data_cleaning_and_exploration_day1.R'.Now what I want you to do is look over the .pdf for your project description and look over your questions. Discuss with your group how you think the data should be set up to answer your questions.
 
-
-
-
 <br>
 
----
+------------------------------------------------------------------------
 
 <br>
-
 
 ## Step 2: Reading in your data
 
-ou should already be working inside your R Project for this workshop. This means R will treat your project folder as the starting point for any file paths, so you only need to tell it where your .csv file is stored within that folder. If your data are saved inside a data folder in your project, your file path will begin with `data/`. 
+You should already be working inside your R Project for this workshop. This means R will treat your project folder as the starting point for any file paths, so you only need to tell it where your .csv file is stored within that folder. If your data are saved inside a data folder in your project, your file path will begin with `data/`. <br> [[*PRO TIP*]{.underline}]{.smallcaps} : Remember you can put in the `read.csv()` function as soon as you type in your "" press `tab` and you can quickly navigate folders.
 
-```
+```         
 # Read in a .csv file from the "data" folder
 my_data <- read.csv("data/example_dataset.csv")
 
 # View the first few rows
 head(my_data)
 ```
-If your `.csv` file contains extra rows at the top — for example, notes or metadata that are not part of the data table — you can skip them when reading the file by using the skip argument:
-```
+
+If your `.csv` file contains extra rows at the top --- for example, notes or metadata that are not part of the data table --- you can skip them when reading the file by using the skip argument:
+
+```         
 # Skip the first 2 rows in the file
 my_data <- read.csv("data/example_dataset.csv", skip = 2)
 head(my_data)
 ```
 
-
-
-
 <br>
 
----
+------------------------------------------------------------------------
 
 <br>
 
@@ -90,12 +84,11 @@ Note there will be some problems where I have not taught you the solutions... ye
 
 <br>
 
----
+------------------------------------------------------------------------
 
 <br>
 
-
-## Step 4: Start your cleaning protocol!
+## Step 4: Start practicing your cleaning protocol!
 
 ![](workshop_images/paper.png) We want to use the steps outlined in class from Zuur et al. (2010), A protocol for data exploration to avoid common statistical problems. As you are cleaning make sure you are renaming objects as you go. For example:
 
